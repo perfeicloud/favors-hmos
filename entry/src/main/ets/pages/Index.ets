@@ -68,7 +68,7 @@ struct Index {
             Column() {
               NavBar({
                 title: item.text,
-                isBack: index > 0 && true
+                isBack: index > 0 && true,
               })
               Text(item.text)
               Text(`State: ${this.statusBarHeight}, Navigation: ${this.navigationBarHeight}`)
