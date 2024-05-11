@@ -1,5 +1,7 @@
 import { StatusBarManager } from '../commons/StatusBarManager'
-import { NavBar } from './components/NavBar'
+import { TabContacts } from './TabContacts'
+import { TabHome } from './TabHome'
+import { TabMy } from './TabMy'
 
 interface ITabItem {
   text: Resource|string
@@ -16,17 +18,17 @@ struct Index {
   private tabsController: TabsController = new TabsController()
   private tabItems: ITabItem[] = [
     {
-      text: '人情账',
-      icon: $r('app.media.ic_tab_present_0'),
-      selectedIcon: $r('app.media.ic_tab_present_1'),
+      text: $r('app.string.TabHome_label'),
+      icon: $r("app.media.ic_tab_home_0"),
+      selectedIcon: $r("app.media.ic_tab_home_1"),
     },
     {
-      text: '亲友圈',
+      text: $r('app.string.TabContacts_label'),
       icon: $r('app.media.ic_tab_contacts_0'),
       selectedIcon: $r('app.media.ic_tab_contacts_1'),
     },
     {
-      text: '我的',
+      text: $r('app.string.TabMy_label'),
       icon: $r("app.media.ic_tab_my_0"),
       selectedIcon: $r("app.media.ic_tab_my_1"),
     }
@@ -40,7 +42,7 @@ struct Index {
         .margin({ bottom: 4 })
       Text(item.text)
         .lineHeight(14)
-        .fontColor(this.currentTabIndex === index ? Color.Orange : Color.Gray)
+        .fontColor(this.currentTabIndex === index ? 0xFF5D50 : 0x8a8a8a)
         .fontSize(10)
         .fontWeight(this.currentTabIndex === index ? FontWeight.Bold : FontWeight.Normal)
     }
@@ -52,27 +54,18 @@ struct Index {
     })
   }
 
-  aboutToAppear() {
-    // 设置沉浸式窗口，获取状态栏高度
-    StatusBarManager.on().setImmersiveStatusBar().then(res => {
-      this.statusBarHeight = res.statusBarHeight
-      this.navigationBarHeight = res.navigationBarHeight
-    })
-  }
-
   build() {
     Column() {
-      Tabs({barPosition: BarPosition.End, controller: this.tabsController}) {
+      Tabs({ barPosition: BarPosition.End, controller: this.tabsController }) {
         ForEach(this.tabItems, (item: ITabItem, index) => {
           TabContent() {
-            Column() {
-              NavBar({
-                title: item.text,
-                isBack: index > 0 && true,
-              })
-              Text(item.text)
-              Text(`State: ${this.statusBarHeight}, Navigation: ${this.navigationBarHeight}`)
-            }.height('100%').padding({left: 12, right: 12})
+              if (index === 0) {
+                TabHome({ statusBarHeight: this.statusBarHeight, navigationBarHeight: this.navigationBarHeight})
+              } else if (index === 1) {
+                TabContacts()
+              } else if (index === 2) {
+                TabMy()
+              }
           }.tabBar(this.TabBar(index, item))
         })
       }
@@ -82,6 +75,14 @@ struct Index {
     }
     .padding({ top: px2vp(this.statusBarHeight), bottom: px2vp(this.navigationBarHeight) })
     .backgroundColor($r('app.color.start_window_background'))
+  }
+
+  aboutToAppear() {
+    // 设置沉浸式窗口，获取状态栏高度
+    StatusBarManager.on().setImmersiveStatusBar().then(res => {
+      this.statusBarHeight = res.statusBarHeight
+      this.navigationBarHeight = res.navigationBarHeight
+    })
   }
 
 }

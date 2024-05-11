@@ -11,6 +11,18 @@
     {
       "name": "EntryAbility_label",
       "value": "Favors"
+    },
+    {
+      "name": "TabHome_label",
+      "value": "Home"
+    },
+    {
+      "name": "TabContacts_label",
+      "value": "Contacts"
+    },
+    {
+      "name": "TabMy_label",
+      "value": "My"
     }
   ]
 }

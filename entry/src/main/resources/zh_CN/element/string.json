@@ -11,6 +11,18 @@
     {
       "name": "EntryAbility_label",
       "value": "人情账"
+    },
+    {
+      "name": "TabHome_label",
+      "value": "首页"
+    },
+    {
+      "name": "TabContacts_label",
+      "value": "亲友圈"
+    },
+    {
+      "name": "TabMy_label",
+      "value": "我的"
     }
   ]
 }
