@@ -12,17 +12,28 @@
       "name": "EntryAbility_label",
       "value": "Favors"
     },
+
     {
-      "name": "TabHome_label",
+      "name": "TabItem_Home_text",
       "value": "Home"
     },
     {
-      "name": "TabContacts_label",
-      "value": "Contacts"
+      "name": "TabItem_Contact_text",
+      "value": "Contact"
     },
     {
-      "name": "TabMy_label",
+      "name": "TabItem_My_text",
       "value": "My"
+    },
+
+    {
+      "name": "UserInfo_nickName",
+      "value": "New user"
+    },
+
+    {
+      "name": "Book_name",
+      "value": "New favors book"
     }
   ]
 }

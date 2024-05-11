@@ -12,17 +12,28 @@
       "name": "EntryAbility_label",
       "value": "人情账"
     },
+
     {
-      "name": "TabHome_label",
+      "name": "TabItem_Home_text",
       "value": "首页"
     },
     {
-      "name": "TabContacts_label",
+      "name": "TabItem_Contact_text",
       "value": "亲友圈"
     },
     {
-      "name": "TabMy_label",
+      "name": "TabItem_My_text",
       "value": "我的"
+    },
+
+    {
+      "name": "UserInfo_nickName",
+      "value": "新用户"
+    },
+
+    {
+      "name": "Book_name",
+      "value": "新人情薄"
     }
   ]
 }

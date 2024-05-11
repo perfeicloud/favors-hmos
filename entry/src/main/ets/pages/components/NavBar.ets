@@ -9,15 +9,15 @@ export interface INavBar {
   title: Resource|string
   isBack?: boolean
   icons?: Array<IIconItem>
-  menus?: Array<{ value: string, action: ()=>void }>
+  menus?: Array<MenuElement>
 }
 
 @Component
 export struct NavBar {
-  private title: Resource|string
-  private isBack: boolean
+  private title: Resource|string = ''
+  private isBack: boolean = false
   private icons: (IIconItem)[] = []
-  private menus: ({ value: string, action: ()=>void })[] = []
+  private menus: MenuElement[] = []
 
   build() {
     Row({ space: 12 }) {
