@@ -8,12 +8,11 @@ export class UserInfo {
   constructor(id: number, nickName: string, avatarPath?: string, motto?: string)
 
   constructor(id?: number, nickName?: string, avatarPath?: string, motto?: string) {
-    if (id) {
+    if (id !== undefined) {
       this.id = id
       this.nickName = nickName
       if (avatarPath) this.avatarPath = avatarPath
       if (motto) this.motto = motto
     }
   }
-
 }
