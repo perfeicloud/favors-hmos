@@ -26,8 +26,6 @@ struct Index {
         .fontWeight(this.currentTabIndex === index ? FontWeight.Bold : FontWeight.Normal)
     }
     .width('100%')
-    .padding(12)
-    .backgroundColor($r('app.color.box_background'))
     .onClick(() => this.tabsController.changeIndex(this.currentTabIndex = index))
   }
 

@@ -33,15 +33,16 @@ export class StatusBarManager {
         windowClass.setWindowLayoutFullScreen(is).then(() => {
           if (is) {
             windowClass.setWindowSystemBarEnable(arrSystemBarEnable).then(() => {
-              const avoidArea = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM)
-              // TODO: setWindowSystemBarProperties API9未生效
               windowClass.setWindowSystemBarProperties({
                 statusBarColor: '#00000000',
-                statusBarContentColor: '#ffffff',
+                statusBarContentColor: '#000000',
                 navigationBarColor: '#00000000',
-                navigationBarContentColor:'#ffffff'
+                navigationBarContentColor:'#000000'
               })
-              resolve({statusBarHeight: avoidArea.topRect.height | 0, navigationBarHeight: avoidArea.bottomRect.height | 0})
+              resolve({
+                statusBarHeight: windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height | 0,
+                navigationBarHeight: windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR).bottomRect.height | 0
+              })
             }).catch(err => reject(err))
           } else {
             resolve({statusBarHeight: 0, navigationBarHeight: 0})

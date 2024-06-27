@@ -24,7 +24,7 @@ export struct Home {
             Text(`${item} - Favors Item`)
           }.boxStyles()
         })
-      }.layoutWeight(1).padding({ bottom: 12 })
+      }.layoutWeight(1)
     }.height('100%').padding({ left: 12, right: 12 })
   }
 }
