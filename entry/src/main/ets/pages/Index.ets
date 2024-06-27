@@ -3,7 +3,6 @@ import { TabItem } from '../models/TabItem'
 import { Home } from './tabpages/Home'
 import { Contact } from './tabpages/Contact'
 import { My } from './tabpages/My'
-import { QuickLoginPanel } from './components/QuickLoginPanel'
 
 @Entry
 @Component
@@ -36,8 +35,6 @@ struct Index {
 
   build() {
     Column() {
-      QuickLoginPanel({show: true})
-
       Tabs({ barPosition: BarPosition.End, controller: this.tabsController }) {
         ForEach(this.tabItems, (item: TabItem, index) => {
           TabContent() {
@@ -52,7 +49,7 @@ struct Index {
       })
     }
     .padding({ top: px2vp(this.statusBarHeight), bottom: px2vp(this.navigationBarHeight) })
-    .backgroundColor($r('sys.color.background_secondary'))
+    .backgroundColor($r('sys.color.ohos_id_container_color'))
   }
 
   aboutToAppear() {

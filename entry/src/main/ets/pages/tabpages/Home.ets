@@ -7,7 +7,7 @@ export struct Home {
     .margin({ top: 12 })
     .padding(12)
     .borderRadius(14)
-    .backgroundColor($r('sys.color.background_primary'))
+    .backgroundColor($r('sys.color.ohos_id_color_list_card_bg'))
   }
 
   build() {
