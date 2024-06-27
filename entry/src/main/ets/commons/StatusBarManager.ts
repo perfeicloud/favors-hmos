@@ -25,28 +25,15 @@ export class StatusBarManager {
    */
   public setImmersiveStatusBar(
     is: boolean = true,
-    arrSystemBarEnable: Array<'status'|'navigation'> = ['status', 'navigation'],
     windowStage: window.WindowStage = this.mWindowStage
   ): Promise<{statusBarHeight: number, navigationBarHeight: number}> {
     return new Promise((resolve, reject) => {
       windowStage.getMainWindow().then(windowClass => {
         windowClass.setWindowLayoutFullScreen(is).then(() => {
-          if (is) {
-            windowClass.setWindowSystemBarEnable(arrSystemBarEnable).then(() => {
-              windowClass.setWindowSystemBarProperties({
-                statusBarColor: '#00000000',
-                statusBarContentColor: '#000000',
-                navigationBarColor: '#00000000',
-                navigationBarContentColor:'#000000'
-              })
-              resolve({
-                statusBarHeight: windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height | 0,
-                navigationBarHeight: windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR).bottomRect.height | 0
-              })
-            }).catch(err => reject(err))
-          } else {
-            resolve({statusBarHeight: 0, navigationBarHeight: 0})
-          }
+          resolve({
+            statusBarHeight: windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height | 0,
+            navigationBarHeight: windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR).bottomRect.height | 0
+          })
         }).catch(err => reject(err))
       }).catch(err => reject(err))
     })

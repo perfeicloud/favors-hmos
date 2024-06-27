@@ -7,7 +7,7 @@ export struct Home {
     .margin({ top: 12 })
     .padding(12)
     .borderRadius(14)
-    .backgroundColor($r('app.color.box_background'))
+    .backgroundColor($r('sys.color.background_primary'))
   }
 
   build() {
