@@ -9,8 +9,7 @@ export class Tally {
               amount: number,
               category: number,
               timestamp: number,
-              remark?: string
-  ) {
+              remark?: string) {
     this.id = id
     this.amount = amount
     this.category = category

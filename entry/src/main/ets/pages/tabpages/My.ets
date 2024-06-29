@@ -11,11 +11,11 @@ export struct My {
       NavBar({ title: '我的' })
       // 个人信息
       Row() {
-        Image(this.userInfo.avatarPath || $r('app.media.ic_user_portrait'))
+        Image(this.userInfo.avatarPath)
           .width(36)
           .height(36)
           .borderRadius(100)
-        Text(this.userInfo.nickName || $r('app.string.UserInfo_nickName'))
+        Text(this.userInfo.nickName)
           .fontSize(16)
           .margin({left: 12})
       }
@@ -25,7 +25,7 @@ export struct My {
   aboutToAppear() {
     // 获取UserInfo
     setTimeout(() => {
-      this.userInfo = new UserInfo(1, '白日梦想家', 'https://game.gtimg.cn/images/yxzj/coming/v2/skins//image/20240302/17093507917127.jpg')
+      this.userInfo = new UserInfo('白日梦想家', 1, 'https://game.gtimg.cn/images/yxzj/coming/v2/skins//image/20240302/17093507917127.jpg')
       console.log(`${this.userInfo.id}, ${JSON.stringify(this.userInfo)}`)
     }, 5000)
     console.log(`${this.userInfo.id}, ${JSON.stringify(this.userInfo)}`)

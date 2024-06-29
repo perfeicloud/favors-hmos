@@ -7,8 +7,7 @@ export class Book {
   constructor(id: number = 0,
               name: string | Resource  = $r('app.string.Book_name'),
               icon: string | Resource = $r('app.media.ic_book_icon'),
-              remark: string = ''
-  ) {
+              remark: string = '') {
     this.id = id
     this.name = name
     this.icon = icon
