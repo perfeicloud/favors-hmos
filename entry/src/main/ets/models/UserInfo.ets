@@ -1,16 +1,16 @@
 export class UserInfo {
-  readonly id: number = 0
-  nickName?: string | Resource
-  avatarPath?: string | Resource
+  readonly id: number
+  nickName?: string
+  avatarPath?: string
   motto?: string
 
   constructor()
   constructor(id: number, nickName: string, avatarPath?: string, motto?: string)
 
-  constructor(id?: number, nickName?: string, avatarPath?: string, motto?: string) {
-    this.id = id || 0
-    this.nickName = nickName || $r('app.string.UserInfo_nickName')
-    this.avatarPath = avatarPath || $r('app.media.ic_user_portrait')
+  constructor(id = 0, nickName?: string, avatarPath?: string, motto?: string) {
+    this.id = id
+    if (nickName) this.nickName = nickName
+    if (avatarPath) this.avatarPath = avatarPath
     if (motto) this.motto = motto
   }
 }

@@ -1,4 +1,5 @@
 import { StatusBarManager } from '../commons/StatusBarManager'
+import { UserInfo } from '../models/UserInfo'
 import { TabItem } from '../models/TabItem'
 import { Home } from './tabpages/Home'
 import { Contact } from './tabpages/Contact'
