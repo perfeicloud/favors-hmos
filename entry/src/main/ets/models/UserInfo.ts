@@ -6,7 +6,6 @@ export class UserInfo {
 
   constructor()
   constructor(id: number, nickName: string, avatarPath?: string, motto?: string)
-
   constructor(id = 0, nickName?: string, avatarPath?: string, motto?: string) {
     this.id = id
     if (nickName) this.nickName = nickName

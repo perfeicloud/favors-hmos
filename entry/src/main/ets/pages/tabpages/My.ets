@@ -2,7 +2,6 @@ import { UserInfo } from '../../models/UserInfo'
 import { NavBar } from '../components/NavBar'
 
 @Component
-@Preview
 export struct My {
   @State userInfo: UserInfo = new UserInfo()
 
