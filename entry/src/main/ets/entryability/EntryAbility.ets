@@ -1,7 +1,7 @@
 import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import { StatusBarManager } from '../commons/StatusBarManager';
+import { AvoidAreaHeight } from '../models/AvoidAreaHeight';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want: Want, launchParam: AbilityConstant.LaunchParam): void {
@@ -16,7 +16,15 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-    StatusBarManager.on(windowStage);
+    // 窗口沉浸式
+    windowStage.getMainWindow().then(windowClass => {
+      windowClass.setWindowLayoutFullScreen(true).then(() => {
+        AppStorage.setOrCreate('AvoidAreaHeight', new AvoidAreaHeight(
+          windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height,
+          windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR).bottomRect.height
+        ));
+      });
+    });
 
     windowStage.loadContent('pages/Index', (err) => {
       if (err.code) {

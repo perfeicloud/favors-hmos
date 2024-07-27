@@ -24,10 +24,9 @@ export struct My {
   aboutToAppear() {
     // 获取UserInfo
     setTimeout(() => {
-      this.userInfo.nickName = '白日梦想家'
-      this.userInfo.avatarPath = 'https://game.gtimg.cn/images/yxzj/coming/v2/skins//image/20240302/17093507917127.jpg'
+      this.userInfo = new UserInfo(1, '白日梦想家', 'https://game.gtimg.cn/images/yxzj/coming/v2/skins//image/20240302/17093507917127.jpg')
       console.log(`${this.userInfo.id}, ${JSON.stringify(this.userInfo)}`)
-    }, 15000)
+    }, 5000)
     console.log(`${this.userInfo.id}, ${JSON.stringify(this.userInfo)}`)
   }
 }

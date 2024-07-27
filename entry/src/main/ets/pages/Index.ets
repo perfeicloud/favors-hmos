@@ -1,14 +1,13 @@
-import { StatusBarManager } from '../commons/StatusBarManager'
-import { TabItem } from '../models/TabItem'
 import { Home } from './tabpages/Home'
 import { Contact } from './tabpages/Contact'
 import { My } from './tabpages/My'
+import { AvoidAreaHeight } from '../models/AvoidAreaHeight'
+import { TabItem } from '../models/TabItem'
 
 @Entry
 @Component
 struct Index {
-  @State statusBarHeight: number = 0
-  @State navigationBarHeight: number = 0
+  @StorageProp('AvoidAreaHeight') avoidAreaHeight: AvoidAreaHeight = new AvoidAreaHeight()
   @State currentTabIndex: number = 0
   private tabItems: TabItem[] = [
     new TabItem($r('app.string.TabItem_Home_text'), $r("app.media.ic_tab_home_0"), $r("app.media.ic_tab_home_1")),
@@ -48,15 +47,11 @@ struct Index {
         this.currentTabIndex = index
       })
     }
-    .padding({ top: px2vp(this.statusBarHeight), bottom: px2vp(this.navigationBarHeight) })
+    .padding({ top: px2vp(this.avoidAreaHeight.top), bottom: px2vp(this.avoidAreaHeight.bottom) })
     .backgroundColor($r('sys.color.ohos_id_container_color'))
   }
 
   aboutToAppear() {
-    // 设置沉浸式窗口，获取状态栏高度
-    StatusBarManager.on().setImmersiveStatusBar().then(res => {
-      this.statusBarHeight = res.statusBarHeight
-      this.navigationBarHeight = res.navigationBarHeight
-    })
+
   }
 }
