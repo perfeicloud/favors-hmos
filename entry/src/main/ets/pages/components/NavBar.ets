@@ -1,22 +1,15 @@
 import router from '@ohos.router'
 
-interface IIconItem {
+interface IconItem {
   icon: Resource|string,
   action: ()=>void
 }
 
-export interface INavBar {
-  title: Resource|string
-  isBack?: boolean
-  icons?: Array<IIconItem>
-  menus?: Array<MenuElement>
-}
-
 @Component
 export struct NavBar {
-  private title: Resource|string = ''
+  title: Resource|string = ''
   private isBack: boolean = false
-  private icons: (IIconItem)[] = []
+  private icons: (IconItem)[] = []
   private menus: MenuElement[] = []
 
   build() {
@@ -32,7 +25,7 @@ export struct NavBar {
         .fontWeight(500)
       Blank()
       Row({space: 24}) {
-        ForEach(this.icons, (item: IIconItem) => {
+        ForEach(this.icons, (item: IconItem) => {
           Image(item.icon)
             .width(24)
             .height(24)

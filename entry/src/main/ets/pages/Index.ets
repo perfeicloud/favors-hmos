@@ -1,8 +1,8 @@
 import { Home } from './tabpages/Home'
 import { Contact } from './tabpages/Contact'
 import { My } from './tabpages/My'
-import { AvoidAreaHeight } from '../models/AvoidAreaHeight'
-import { TabItem } from '../models/TabItem'
+import { AvoidAreaHeight, TabItem } from '../models/AppStorages'
+import { UserInfo } from '../models/UserInfo'
 
 @Entry
 @Component
@@ -52,6 +52,9 @@ struct Index {
   }
 
   aboutToAppear() {
-
+    setTimeout(() => {
+      const userInfo = new UserInfo(1, '白日梦想家', 'https://game.gtimg.cn/images/yxzj/coming/v2/skins//image/20240302/17093507917127.jpg')
+      AppStorage.setOrCreate('UserInfo', userInfo)
+    }, 10000)
   }
 }

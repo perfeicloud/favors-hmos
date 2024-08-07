@@ -3,7 +3,7 @@ import { NavBar } from '../components/NavBar'
 
 @Component
 export struct My {
-  @State userInfo: UserInfo = new UserInfo()
+  @StorageProp('UserInfo') userInfo: UserInfo = new UserInfo()
 
   build() {
     Column() {
@@ -19,14 +19,5 @@ export struct My {
           .margin({left: 12})
       }
     }.height('100%').padding({ left: 12, right: 12 })
-  }
-
-  aboutToAppear() {
-    // 获取UserInfo
-    setTimeout(() => {
-      this.userInfo = new UserInfo(1, '白日梦想家', 'https://game.gtimg.cn/images/yxzj/coming/v2/skins//image/20240302/17093507917127.jpg')
-      console.log(`${this.userInfo.id}, ${JSON.stringify(this.userInfo)}`)
-    }, 5000)
-    console.log(`${this.userInfo.id}, ${JSON.stringify(this.userInfo)}`)
   }
 }
