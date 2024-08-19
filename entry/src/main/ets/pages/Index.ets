@@ -1,8 +1,11 @@
+import { AvoidAreaHeight, TabItem } from '../models/AppStorages'
+import { User } from '../models/User'
 import { Home } from './tabpages/Home'
 import { Contact } from './tabpages/Contact'
 import { My } from './tabpages/My'
-import { AvoidAreaHeight, TabItem } from '../models/AppStorages'
-import { UserInfo } from '../models/UserInfo'
+
+const newUser = new User(1, '白日梦想家', 'https://game.gtimg.cn/images/yxzj/coming/v2/skins//image/20240302/17093507917127.jpg')
+PersistentStorage.persistProp('UserInfo', newUser)
 
 @Entry
 @Component
@@ -29,7 +32,7 @@ struct Index {
         .fontWeight(this.currentTabIndex === index ? FontWeight.Bold : FontWeight.Normal)
     }
     .width('100%')
-    .onClick(() => this.tabsController.changeIndex(this.currentTabIndex = index))
+    .onClick(() => this.tabsController.changeIndex(index))
   }
 
   build() {
@@ -43,8 +46,8 @@ struct Index {
           }.tabBar(this.TabBar(index, item))
         })
       }
-      .onChange((index: number) => {
-        this.currentTabIndex = index
+      .onAnimationStart((_i, targetIndex, _e) => {
+        this.currentTabIndex = targetIndex
       })
     }
     .padding({ top: px2vp(this.avoidAreaHeight.top), bottom: px2vp(this.avoidAreaHeight.bottom) })
@@ -52,9 +55,15 @@ struct Index {
   }
 
   aboutToAppear() {
-    setTimeout(() => {
-      const userInfo = new UserInfo(1, '白日梦想家', 'https://game.gtimg.cn/images/yxzj/coming/v2/skins//image/20240302/17093507917127.jpg')
-      AppStorage.setOrCreate('UserInfo', userInfo)
-    }, 10000)
+    // dataPreferences.get('userInfo', undefined).then(data => {
+    //   if (data) {
+    //     this.userInfo = data as User
+    //   } else {
+    //     const newUser = new User()
+    //     dataPreferences.put('userInfo', newUser).then(() => {
+    //       dataPreferences.flush()
+    //     })
+    //   }
+    // })
   }
 }

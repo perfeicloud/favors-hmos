@@ -1,14 +1,13 @@
 export class Book {
   readonly id: number
-  name: string | Resource
-  icon: string | Resource
-  remark: string
+  owner: number
+  name?: string
+  icon?: string
+  remark?: string
 
-  constructor(id: number = 0,
-              name: string | Resource  = $r('app.string.Book_name'),
-              icon: string | Resource = $r('app.media.ic_book_icon'),
-              remark: string = '') {
+  constructor(id = 0, owner = 0, name?: string, icon?: string, remark?: string) {
     this.id = id
+    this.owner = owner
     this.name = name
     this.icon = icon
     this.remark = remark

@@ -19,6 +19,7 @@ export default class EntryAbility extends UIAbility {
     // 窗口沉浸式
     windowStage.getMainWindow().then(windowClass => {
       windowClass.setWindowLayoutFullScreen(true).then(() => {
+        hilog.info(0x0000, 'dataTag', 'Succeeded in loading the AvoidAreaHeight.')
         AppStorage.setOrCreate('AvoidAreaHeight', new AvoidAreaHeight(
           windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height,
           windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_NAVIGATION_INDICATOR).bottomRect.height

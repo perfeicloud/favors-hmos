@@ -1,4 +1,4 @@
-export class UserInfo {
+export class User {
   readonly id: number
   nickName?: string
   avatarPath?: string

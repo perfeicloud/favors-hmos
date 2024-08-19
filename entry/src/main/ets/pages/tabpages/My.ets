@@ -1,9 +1,9 @@
-import { UserInfo } from '../../models/UserInfo'
+import { User } from '../../models/User'
 import { NavBar } from '../components/NavBar'
 
 @Component
 export struct My {
-  @StorageProp('UserInfo') userInfo: UserInfo = new UserInfo()
+  @StorageProp('UserInfo') userInfo: User = new User()
 
   build() {
     Column() {
