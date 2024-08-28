@@ -3,7 +3,7 @@ import { NavBar } from '../components/NavBar'
 
 @Component
 export struct My {
-  @StorageProp('UserInfo') userInfo: User = new User()
+  @Prop userInfo: User
 
   build() {
     Column() {

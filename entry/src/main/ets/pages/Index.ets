@@ -3,13 +3,12 @@ import { User } from '../models/User'
 import { Home } from './tabpages/Home'
 import { Contact } from './tabpages/Contact'
 import { My } from './tabpages/My'
-
-const newUser = new User(1, '白日梦想家', 'https://game.gtimg.cn/images/yxzj/coming/v2/skins//image/20240302/17093507917127.jpg')
-PersistentStorage.persistProp('UserInfo', newUser)
+import { Request } from '../commons/Request'
 
 @Entry
 @Component
 struct Index {
+  @State userInfo: User = new User()
   @StorageProp('AvoidAreaHeight') avoidAreaHeight: AvoidAreaHeight = new AvoidAreaHeight()
   @State currentTabIndex: number = 0
   private tabItems: TabItem[] = [
@@ -42,7 +41,7 @@ struct Index {
           TabContent() {
             if (index === 0) Home()
             else if (index === 1) Contact()
-            else if (index === 2) My()
+            else if (index === 2) My({ userInfo: this.userInfo })
           }.tabBar(this.TabBar(index, item))
         })
       }
@@ -55,15 +54,10 @@ struct Index {
   }
 
   aboutToAppear() {
-    // dataPreferences.get('userInfo', undefined).then(data => {
-    //   if (data) {
-    //     this.userInfo = data as User
-    //   } else {
-    //     const newUser = new User()
-    //     dataPreferences.put('userInfo', newUser).then(() => {
-    //       dataPreferences.flush()
-    //     })
-    //   }
-    // })
+    Request.GET('/user/info').then(data => {
+      this.userInfo = data as User
+    }).catch((err: object) => {
+      console.error(JSON.stringify(err))
+    })
   }
 }
